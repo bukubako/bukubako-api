@@ -1,1 +1,1 @@
-web: java -jar build/libs/bukubako-api-1.0.jar
+web: java -jar build/libs/api-1.0.jar
