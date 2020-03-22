@@ -1,4 +1,4 @@
-package com.bukubako.api.controller.response
+package com.bukubako.api.application.response
 
 import com.bukubako.api.domain.SearchResult
 

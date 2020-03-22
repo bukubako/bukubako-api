@@ -1,7 +1,6 @@
-package com.bukubako.api.controller
+package com.bukubako.api.application.controller
 
-import com.bukubako.api.controller.response.ItemResponse
-import com.bukubako.api.controller.response.SearchResponse
+import com.bukubako.api.application.response.SearchResponse
 import com.bukubako.api.service.SearchService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.GetMapping

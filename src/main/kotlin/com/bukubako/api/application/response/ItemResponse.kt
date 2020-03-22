@@ -1,4 +1,4 @@
-package com.bukubako.api.controller.response
+package com.bukubako.api.application.response
 
 data class ItemResponse(
         val title: String,
