@@ -1,11 +1,15 @@
 package com.bukubako.api.controller.response
 
+import com.bukubako.api.domain.SearchResult
+
 data class SearchResponse(
         val keyword: String,
         val totalItems: Int,
-        val items: List<ItemResponse>)
+        val items: List<ItemResponse>) {
 
-data class ItemResponse(
-        val title: String,
-        val description: String
-)
+    constructor(keyword: String, searchResult: SearchResult): this(
+            keyword,
+            searchResult.totalItems(),
+            searchResult.bookSummaries().map { ItemResponse(it.title(), it.description()) }
+    )
+}
