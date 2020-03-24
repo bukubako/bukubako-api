@@ -10,6 +10,6 @@ data class SearchResponse(
     constructor(keyword: String, searchResult: SearchResult): this(
             keyword,
             searchResult.totalItems(),
-            searchResult.bookSummaries().map { ItemResponse(it.title(), it.description()) }
+            searchResult.bookSummaries().map { ItemResponse(it.title()) }
     )
 }

@@ -1,6 +1,5 @@
 package com.bukubako.api.application.response
 
 data class ItemResponse(
-        val title: String,
-        val description: String
+        val title: String
 )
