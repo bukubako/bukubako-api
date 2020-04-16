@@ -15,10 +15,10 @@ class SwaggerConfig {
     fun bukubakoApi(): Docket =
             Docket(DocumentationType.SWAGGER_2)
                     .select()
-                    .paths(PathSelectors.ant("/search"))
+                    .paths(PathSelectors.any())
                     .build()
                     .useDefaultResponseMessages(false)
-                    .host("springbootswagger.example.com")
+                    .host("http://api-bukubako.herokuapp.com")
                     .apiInfo(ApiInfoBuilder()
                             .title("Bukubako API")
                             .description("This provides APIs for Bukubako")
