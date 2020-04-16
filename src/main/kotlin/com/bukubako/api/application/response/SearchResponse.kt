@@ -13,3 +13,7 @@ data class SearchResponse(
             searchResult.bookSummaries().map { ItemResponse(it.title()) }
     )
 }
+
+data class ItemResponse(
+        val title: String
+)
