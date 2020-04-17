@@ -10,10 +10,9 @@ data class SearchResponse(
     constructor(keyword: String, searchResult: SearchResult): this(
             keyword,
             searchResult.totalItems(),
-            searchResult.bookSummaries().map { ItemResponse(it.title()) }
-    )
+            searchResult.bookSummaries().map { ItemResponse(it.title(), it.description()) })
 }
 
 data class ItemResponse(
-        val title: String
-)
+        val title: String,
+        val description: String)
