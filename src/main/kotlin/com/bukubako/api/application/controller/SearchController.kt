@@ -14,6 +14,6 @@ class SearchController {
     lateinit var service: SearchService
 
     @GetMapping("search")
-    fun get(@RequestParam("q") q: String): SearchResponse =
-            SearchResponse(service.search(q))
+    fun get(@RequestParam("q") q: String, @RequestParam("page") page: Int?): SearchResponse =
+            SearchResponse(service.search(q, page?: 0))
 }
