@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("books")
 class BookController {
 
-    @GetMapping("{isbn13}")
-    fun get(@PathVariable isbn13: String): BookResponse =
+    @GetMapping("{id}")
+    fun get(@PathVariable id: String): BookResponse =
             BookResponse(
                     "夏目漱石 思想の比較と未知の探究",
                     listOf("宮本盛太郎", "関静雄"),
