@@ -1,6 +1,6 @@
 package com.bukubako.api.domain
 
-class BookSummary(private val title: String, private val description: String) {
+class BookSummary(private val title: String, private val authors: List<String>) {
     fun title(): String = title
-    fun description(): String = description
+    fun authors(): List<String> = authors
 }

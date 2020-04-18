@@ -6,11 +6,12 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class GoogleSearchResponse(
+        val kind: String,
         val totalItems: Int,
         val items: List<GoogleItem>) {
 
     fun toSearchResult(): SearchResult =
-            SearchResult(totalItems, items.map { BookSummary(it.volumeInfo.title, it.volumeInfo.description) })
+            SearchResult(totalItems, items.map { BookSummary(it.volumeInfo.title, it.volumeInfo.authors) })
 }
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -20,4 +21,14 @@ data class GoogleItem(
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class GoogleVolumeInfo(
         val title: String,
-        val description: String = "")
+        val authors: List<String> = emptyList(),
+        val publisher: String = "",
+        val publishedDate: String = "",
+        val description: String = "",
+        val categories: List<String> = emptyList(),
+        val imageLinks: GoogleImageLinks)
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+data class GoogleImageLinks(
+        val smallThumbnail: String = "",
+        val thumbnail: String = "")

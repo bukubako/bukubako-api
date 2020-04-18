@@ -15,5 +15,5 @@ class SearchController {
 
     @GetMapping("search")
     fun get(@RequestParam("q") q: String): SearchResponse =
-            SearchResponse(q, service.search(q))
+            SearchResponse(service.search(q))
 }
