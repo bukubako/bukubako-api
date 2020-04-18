@@ -13,4 +13,3 @@ class SearchResult(
     fun nextPageUri(): URI =
             URI("https://api-bukubako.herokuapp.com/search?q=${keyword}&page=${currentPage.inc()}") // TODO generate host name
 }
-

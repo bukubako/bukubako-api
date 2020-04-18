@@ -34,7 +34,7 @@ data class GoogleVolumeInfo(
         val publishedDate: String = "",
         val description: String = "",
         val categories: List<String> = emptyList(),
-        val imageLinks: GoogleImageLinks)
+        val imageLinks: GoogleImageLinks = GoogleImageLinks("", ""))
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class GoogleImageLinks(
