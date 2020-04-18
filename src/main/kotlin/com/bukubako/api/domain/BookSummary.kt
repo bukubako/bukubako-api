@@ -5,6 +5,6 @@ import java.net.URI
 class BookSummary(private val id: String, private val title: String, private val authors: List<String>) {
     fun title(): String = title
     fun authors(): List<String> = authors
-    fun detailUri(): String =
-            URI("https://api-bukubako.herokuapp.com/books/$id").toString() // TODO generate host name
+    fun detailUri(): URI =
+            URI("https://api-bukubako.herokuapp.com/books/$id") // TODO generate host name
 }

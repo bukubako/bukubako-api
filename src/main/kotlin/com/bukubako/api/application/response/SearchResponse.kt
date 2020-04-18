@@ -9,7 +9,7 @@ data class SearchResponse(
 
     constructor(searchResult: SearchResult): this(
             searchResult.hitCount(),
-            searchResult.bookSummaries().map { ItemResponse(it.title(), it.authors(), it.detailUri()) },
+            searchResult.bookSummaries().map { ItemResponse(it.title(), it.authors(), it.detailUri().toString()) },
             searchResult.nextPageUri().toString())
 }
 
