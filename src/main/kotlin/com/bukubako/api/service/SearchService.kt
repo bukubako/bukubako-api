@@ -22,5 +22,5 @@ class SearchService {
                             .build()
                             .toUri(),
                     GoogleSearchResponse::class.java)!!
-                    .toSearchResult()
+                    .toSearchResult(keyword, page)
 }

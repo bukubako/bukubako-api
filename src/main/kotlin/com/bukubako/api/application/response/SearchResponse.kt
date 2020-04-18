@@ -4,11 +4,13 @@ import com.bukubako.api.domain.SearchResult
 
 data class SearchResponse(
         val hitCount: Int,
-        val items: List<ItemResponse>) {
+        val items: List<ItemResponse>,
+        val nextPageUri: String) {
 
     constructor(searchResult: SearchResult): this(
             searchResult.hitCount(),
-            searchResult.bookSummaries().map { ItemResponse(it.title(), it.authors(), it.detailUri()) })
+            searchResult.bookSummaries().map { ItemResponse(it.title(), it.authors(), it.detailUri()) },
+            searchResult.nextPageUri().toString())
 }
 
 data class ItemResponse(
