@@ -11,5 +11,6 @@ class SearchResult(
     fun hitCount(): Int = hitCount
     fun bookSummaries(): List<BookSummary> = bookSummaries
     fun nextPageUri(): URI =
-            URI("https://api-bukubako.herokuapp.com/search?q=${keyword}&page=${currentPage + 1}") // TODO generate host name
+            URI("https://api-bukubako.herokuapp.com/search?q=${keyword}&page=${currentPage.inc()}") // TODO generate host name
 }
+
