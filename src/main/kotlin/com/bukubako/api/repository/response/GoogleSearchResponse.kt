@@ -11,11 +11,17 @@ data class GoogleSearchResponse(
         val items: List<GoogleItem>) {
 
     fun toSearchResult(): SearchResult =
-            SearchResult(totalItems, items.map { BookSummary(it.volumeInfo.title, it.volumeInfo.authors) })
+            SearchResult(
+                    totalItems,
+                    items.map { BookSummary(
+                            it.id,
+                            it.volumeInfo.title,
+                            it.volumeInfo.authors) })
 }
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class GoogleItem(
+        val id: String,
         val volumeInfo: GoogleVolumeInfo)
 
 @JsonIgnoreProperties(ignoreUnknown = true)
