@@ -1,15 +1,13 @@
 package com.bukubako.api.application.controller
 
 import com.bukubako.api.application.response.BookResponse
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("books")
 class BookController {
 
+    @CrossOrigin
     @GetMapping("{id}")
     fun get(@PathVariable id: String): BookResponse =
             BookResponse(
