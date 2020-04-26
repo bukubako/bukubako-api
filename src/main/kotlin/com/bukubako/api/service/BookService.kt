@@ -1,15 +1,25 @@
 package com.bukubako.api.service
 
 import com.bukubako.api.domain.Book
+import com.bukubako.api.repository.response.GoogleBook
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
+import org.springframework.web.client.RestTemplate
+import org.springframework.web.util.UriComponentsBuilder
 
 @Service
 class BookService {
 
+    @Autowired
+    lateinit var restTemplate: RestTemplate
+
     fun get(id: String): Book =
-            Book("夏目漱石 思想の比較と未知の探究",
-                    listOf("宮本盛太郎", "関静雄"),
-                    "未知の装石像とその周辺事実に迫る",
-                    "2000-02",
-                    "http://books.google.com/books/content?id=l-cqAQAAIAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api")
+            restTemplate.getForObject(
+                    UriComponentsBuilder.fromHttpUrl("https://www.googleapis.com")
+                            .path("/books/v1/volumes/")
+                            .path(id)
+                            .build()
+                            .toUri(),
+                    GoogleBook::class.java)!!
+                    .toBook()
 }
