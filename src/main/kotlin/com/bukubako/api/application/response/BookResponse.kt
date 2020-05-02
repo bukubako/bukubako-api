@@ -13,7 +13,7 @@ data class BookResponse(
             book.title(),
             book.authors(),
             book.description(),
-            book.publishedDate(),
+            book.publishedDate().value(),
             book.imageUri()
     )
 }

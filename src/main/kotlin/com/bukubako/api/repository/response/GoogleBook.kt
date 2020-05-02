@@ -1,6 +1,7 @@
 package com.bukubako.api.repository.response
 
 import com.bukubako.api.domain.Book
+import com.bukubako.api.domain.PublishedDate
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -13,7 +14,7 @@ data class GoogleBook(
                     volumeInfo.title,
                     volumeInfo.authors,
                     volumeInfo.description,
-                    volumeInfo.publishedDate,
+                    PublishedDate(volumeInfo.publishedDate),
                     volumeInfo.imageLinks.thumbnail
             )
 }
