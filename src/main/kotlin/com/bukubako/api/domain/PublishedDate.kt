@@ -10,6 +10,9 @@ class PublishedDate(private val string: String) {
 
     fun value(): String =
             when {
+                string.isEmpty() ->
+                    ""
+
                 string.matches(Regex("\\d{4}-\\d{2}-\\d{2}")) ->
                     LocalDate.parse(string).format(DateTimeFormatter.ofPattern("yyyy年MM月dd日"))
 
