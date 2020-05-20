@@ -4,7 +4,7 @@ import com.bukubako.api.domain.SearchResult
 import io.swagger.annotations.ApiModelProperty
 
 data class SearchResponse(
-        val hitCount: Int,
+        @ApiModelProperty(example = "123") val hitCount: Int,
         val items: List<ItemResponse>,
         @ApiModelProperty(example = "https://api-bukubako.herokuapp.com/path/to/next/page") val nextPageUri: String) {
 
@@ -15,6 +15,6 @@ data class SearchResponse(
 }
 
 data class ItemResponse(
-        val title: String,
-        val authors: List<String>,
+        @ApiModelProperty(example = "book title") val title: String,
+        @ApiModelProperty(example = "[author1, author2]") val authors: List<String>,
         @ApiModelProperty(example = "https://api-bukubako.herokuapp.com/path/to/book/detail") val detailUri: String)
