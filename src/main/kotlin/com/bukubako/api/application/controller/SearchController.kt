@@ -3,6 +3,7 @@ package com.bukubako.api.application.controller
 import com.bukubako.api.application.response.SearchResponse
 import com.bukubako.api.service.SearchService
 import io.swagger.annotations.ApiOperation
+import io.swagger.annotations.ApiParam
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.GetMapping
@@ -18,6 +19,7 @@ class SearchController {
     @ApiOperation(value = "This resource fetch the search result by a keyword")
     @CrossOrigin
     @GetMapping("search")
-    fun get(@RequestParam("q") q: String, @RequestParam("page") page: Int?): SearchResponse =
+    fun get(@ApiParam(value = "Search keyword", required = true) @RequestParam("q") q: String,
+            @ApiParam(value = "Page number of search result (zero-based indexing)", required = false) @RequestParam("page") page: Int?): SearchResponse =
             SearchResponse(service.search(q, page?: 0))
 }
