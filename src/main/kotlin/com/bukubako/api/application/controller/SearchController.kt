@@ -1,5 +1,6 @@
 package com.bukubako.api.application.controller
 
+import com.bukubako.api.application.request.SearchRequest
 import com.bukubako.api.application.response.SearchResponse
 import com.bukubako.api.service.SearchService
 import io.swagger.annotations.ApiOperation
@@ -22,7 +23,6 @@ class SearchController {
     fun get(@ApiParam(value = "Search keyword", required = false) @RequestParam("q") q: String?,
             @ApiParam(value = "Page number of search result (zero-based indexing)", required = false) @RequestParam("page") page: Int?,
             @ApiParam(value = "ISBN10 or ISBN13", required = false) @RequestParam("isbn") isbn: String?): SearchResponse {
-        val keyword = if (isbn != null) "isbn:$isbn" else q!!
-        return SearchResponse(service.search(keyword, page?: 0))
+        return SearchResponse(service.search(SearchRequest(q, page, isbn).value(), page?: 0))
     }
 }
