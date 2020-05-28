@@ -22,7 +22,6 @@ class SearchController {
     @GetMapping("search")
     fun get(@ApiParam(value = "Search keyword", required = false) @RequestParam("q") q: String?,
             @ApiParam(value = "Page number of search result (zero-based indexing)", required = false) @RequestParam("page") page: Int?,
-            @ApiParam(value = "ISBN10 or ISBN13", required = false) @RequestParam("isbn") isbn: String?): SearchResponse {
-        return SearchResponse(service.search(SearchRequest(q, page, isbn).value(), page?: 0))
-    }
+            @ApiParam(value = "ISBN10 or ISBN13", required = false) @RequestParam("isbn") isbn: String?): SearchResponse =
+        SearchResponse(service.search(SearchRequest(q, page, isbn)))
 }

@@ -1,5 +1,6 @@
 package com.bukubako.api.service
 
+import com.bukubako.api.application.request.SearchRequest
 import com.bukubako.api.domain.SearchResult
 import com.bukubako.api.repository.response.GoogleSearchResponse
 import org.springframework.beans.factory.annotation.Autowired
@@ -13,14 +14,14 @@ class SearchService {
     @Autowired
     lateinit var restTemplate: RestTemplate
 
-    fun search(keyword: String, page: Int): SearchResult =
+    fun search(request: SearchRequest): SearchResult =
             restTemplate.getForObject(
                     UriComponentsBuilder.fromHttpUrl("https://www.googleapis.com")
                             .path("/books/v1/volumes")
-                            .queryParam("q", keyword)
-                            .queryParam("startIndex", page)
+                            .queryParam("q", request.keyword())
+                            .queryParam("startIndex", request.page())
                             .build()
                             .toUri(),
                     GoogleSearchResponse::class.java)!!
-                    .toSearchResult(keyword, page)
+                    .toSearchResult(request.keyword(), request.page())
 }
