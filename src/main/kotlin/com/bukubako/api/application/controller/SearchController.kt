@@ -19,7 +19,10 @@ class SearchController {
     @ApiOperation(value = "This resource fetch the search result by a keyword")
     @CrossOrigin
     @GetMapping("search")
-    fun get(@ApiParam(value = "Search keyword", required = true) @RequestParam("q") q: String,
-            @ApiParam(value = "Page number of search result (zero-based indexing)", required = false) @RequestParam("page") page: Int?): SearchResponse =
-            SearchResponse(service.search(q, page?: 0))
+    fun get(@ApiParam(value = "Search keyword", required = false) @RequestParam("q") q: String?,
+            @ApiParam(value = "Page number of search result (zero-based indexing)", required = false) @RequestParam("page") page: Int?,
+            @ApiParam(value = "ISBN10 or ISBN13", required = false) @RequestParam("isbn") isbn: String?): SearchResponse {
+        val keyword = if (isbn != null) "isbn:$isbn" else q!!
+        return SearchResponse(service.search(keyword, page?: 0))
+    }
 }
