@@ -8,12 +8,12 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 data class GoogleSearchResponse(
         val kind: String,
         val totalItems: Int,
-        val items: List<GoogleBook>) {
+        val items: List<GoogleBook>?) {
 
     fun toSearchResult(keyword: String, currentPage: Int): SearchResult =
             SearchResult(
                     totalItems,
-                    items.map { BookSummary(
+                    items?.map { BookSummary(
                             it.id,
                             it.volumeInfo.title,
                             it.volumeInfo.authors) },
