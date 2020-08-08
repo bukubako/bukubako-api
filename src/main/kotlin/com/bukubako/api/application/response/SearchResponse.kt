@@ -10,7 +10,7 @@ data class SearchResponse(
 
     constructor(searchResult: SearchResult): this(
             searchResult.hitCount(),
-            searchResult.bookSummaries().map { ItemResponse(it.title(), it.authors(), "http://books.google.com/books/content?id=lUrkAAAAQBAJ&printsec=frontcover&img=1&zoom=5", it.detailUri().toString()) },
+            searchResult.bookSummaries().map { ItemResponse(it.title(), it.authors(), it.image().toString(), it.detailUri().toString()) },
             searchResult.nextPageUri().toString())
 }
 
