@@ -10,11 +10,12 @@ data class SearchResponse(
 
     constructor(searchResult: SearchResult): this(
             searchResult.hitCount(),
-            searchResult.bookSummaries().map { ItemResponse(it.title(), it.authors(), it.detailUri().toString()) },
+            searchResult.bookSummaries().map { ItemResponse(it.title(), it.authors(), "http://books.google.com/books/content?id=lUrkAAAAQBAJ&printsec=frontcover&img=1&zoom=5", it.detailUri().toString()) },
             searchResult.nextPageUri().toString())
 }
 
 data class ItemResponse(
         @ApiModelProperty(example = "book title") val title: String,
         @ApiModelProperty(example = "[author1, author2]") val authors: List<String>,
+        @ApiModelProperty(example = "https://example.com/path/to/book/image") val imageUri: String,
         @ApiModelProperty(example = "https://api-bukubako.herokuapp.com/path/to/book/detail") val detailUri: String)
