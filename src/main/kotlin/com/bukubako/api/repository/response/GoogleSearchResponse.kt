@@ -16,6 +16,7 @@ data class GoogleSearchResponse(
                     items?.map { BookSummary(
                             it.id,
                             it.volumeInfo.title,
+                            it.volumeInfo.imageLinks.smallThumbnail,
                             it.volumeInfo.authors) },
                     keyword,
                     currentPage)
