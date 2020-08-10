@@ -19,9 +19,9 @@ class ReviewController {
             ReviewsResponse(
                     3,
                     listOf<ReviewsResponseElement>(
-                            ReviewsResponseElement("読書 太郎", "2020年8月1日 13時00分", "この本の感想1"),
-                            ReviewsResponseElement("読書 次郎", "2020年8月2日 13時00分", "この本の感想2"),
-                            ReviewsResponseElement("読書 三朗", "2020年8月3日 13時00分", "この本の感想3")
+                            ReviewsResponseElement("読書 太郎", "2020年8月1日 13時00分", "この本の感想1", "http://sample.com/path/to/detail"),
+                            ReviewsResponseElement("読書 次郎", "2020年8月2日 13時00分", "この本の感想2", "http://sample.com/path/to/detail"),
+                            ReviewsResponseElement("読書 三朗", "2020年8月3日 13時00分", "この本の感想3", "http://sample.com/path/to/detail")
                     ),
                     "http://example.com/path/to/next/page"
             )

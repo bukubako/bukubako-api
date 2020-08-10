@@ -11,5 +11,6 @@ data class ReviewsResponse(
 data class ReviewsResponseElement(
         @ApiModelProperty(value = "Author of the review") val author: String,
         @ApiModelProperty(value = "Date time the review post") val wroteDateTime: String,
-        @ApiModelProperty(value = "Title of the review") val title: String
+        @ApiModelProperty(value = "Title of the review") val title: String,
+        @ApiModelProperty(value = "URI for the review resource") val detailUri: String
 )
