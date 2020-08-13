@@ -6,30 +6,33 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class GoogleBook(
-        val id: String,
-        val volumeInfo: GoogleVolumeInfo) {
+    val id: String,
+    val volumeInfo: GoogleVolumeInfo
+) {
 
     fun toBook(): Book =
-            Book(
-                    volumeInfo.title,
-                    volumeInfo.authors,
-                    volumeInfo.description,
-                    PublishedDate(volumeInfo.publishedDate),
-                    volumeInfo.imageLinks.thumbnail
-            )
+        Book(
+            volumeInfo.title,
+            volumeInfo.authors,
+            volumeInfo.description,
+            PublishedDate(volumeInfo.publishedDate),
+            volumeInfo.imageLinks.thumbnail
+        )
 }
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class GoogleVolumeInfo(
-        val title: String,
-        val authors: List<String> = emptyList(),
-        val publisher: String = "",
-        val publishedDate: String = "",
-        val description: String = "",
-        val categories: List<String> = emptyList(),
-        val imageLinks: GoogleImageLinks = GoogleImageLinks("", ""))
+    val title: String,
+    val authors: List<String> = emptyList(),
+    val publisher: String = "",
+    val publishedDate: String = "",
+    val description: String = "",
+    val categories: List<String> = emptyList(),
+    val imageLinks: GoogleImageLinks = GoogleImageLinks("", "")
+)
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class GoogleImageLinks(
-        val smallThumbnail: String = "",
-        val thumbnail: String = "")
+    val smallThumbnail: String = "",
+    val thumbnail: String = ""
+)

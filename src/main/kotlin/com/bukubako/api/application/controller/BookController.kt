@@ -18,5 +18,5 @@ class BookController {
     @CrossOrigin
     @GetMapping("{id}")
     fun get(@ApiParam(value = "Book id provided by google books") @PathVariable id: String): BookResponse =
-            BookResponse(service.get(id))
+        BookResponse(service.get(id))
 }

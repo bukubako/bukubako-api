@@ -15,13 +15,14 @@ class SearchService {
     lateinit var restTemplate: RestTemplate
 
     fun search(request: SearchRequest): SearchResult =
-            restTemplate.getForObject(
-                    UriComponentsBuilder.fromHttpUrl("https://www.googleapis.com")
-                            .path("/books/v1/volumes")
-                            .queryParam("q", request.keyword())
-                            .queryParam("startIndex", request.page())
-                            .build()
-                            .toUri(),
-                    GoogleSearchResponse::class.java)!!
-                    .toSearchResult(request.keyword(), request.page())
+        restTemplate.getForObject(
+            UriComponentsBuilder.fromHttpUrl("https://www.googleapis.com")
+                .path("/books/v1/volumes")
+                .queryParam("q", request.keyword())
+                .queryParam("startIndex", request.page())
+                .build()
+                .toUri(),
+            GoogleSearchResponse::class.java
+        )!!
+            .toSearchResult(request.keyword(), request.page())
 }

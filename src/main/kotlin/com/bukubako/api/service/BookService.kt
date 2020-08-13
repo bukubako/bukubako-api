@@ -14,12 +14,13 @@ class BookService {
     lateinit var restTemplate: RestTemplate
 
     fun get(id: String): Book =
-            restTemplate.getForObject(
-                    UriComponentsBuilder.fromHttpUrl("https://www.googleapis.com")
-                            .path("/books/v1/volumes/")
-                            .path(id)
-                            .build()
-                            .toUri(),
-                    GoogleBook::class.java)!!
-                    .toBook()
+        restTemplate.getForObject(
+            UriComponentsBuilder.fromHttpUrl("https://www.googleapis.com")
+                .path("/books/v1/volumes/")
+                .path(id)
+                .build()
+                .toUri(),
+            GoogleBook::class.java
+        )!!
+            .toBook()
 }

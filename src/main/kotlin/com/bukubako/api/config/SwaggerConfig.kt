@@ -13,15 +13,17 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2
 class SwaggerConfig {
     @Bean
     fun bukubakoApi(): Docket =
-            Docket(DocumentationType.SWAGGER_2)
-                    .select()
-                    .paths(PathSelectors.any())
+        Docket(DocumentationType.SWAGGER_2)
+            .select()
+            .paths(PathSelectors.any())
+            .build()
+            .useDefaultResponseMessages(false)
+            .host("http://api-bukubako.herokuapp.com")
+            .apiInfo(
+                ApiInfoBuilder()
+                    .title("Bukubako API")
+                    .description("This provides APIs for Bukubako")
+                    .version("1.0.0")
                     .build()
-                    .useDefaultResponseMessages(false)
-                    .host("http://api-bukubako.herokuapp.com")
-                    .apiInfo(ApiInfoBuilder()
-                            .title("Bukubako API")
-                            .description("This provides APIs for Bukubako")
-                            .version("1.0.0")
-                            .build())
+            )
 }

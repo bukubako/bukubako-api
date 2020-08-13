@@ -7,5 +7,5 @@ import org.springframework.boot.runApplication
 class BukubakoApiApplication
 
 fun main(args: Array<String>) {
-	runApplication<BukubakoApiApplication>(*args)
+    runApplication<BukubakoApiApplication>(*args)
 }

@@ -10,5 +10,5 @@ class RestConfig {
 
     @Bean
     fun restTemplate(builder: RestTemplateBuilder): RestTemplate =
-            builder.build()
+        builder.build()
 }
