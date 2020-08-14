@@ -1,5 +1,6 @@
 package com.bukubako.api.domain
 
+import org.springframework.web.util.UriComponentsBuilder
 import java.net.URI
 
 class SearchResult(
@@ -12,5 +13,12 @@ class SearchResult(
     fun hitCount(): Int = hitCount
     fun bookSummaries(): List<BookSummary> = bookSummaries ?: emptyList()
     fun nextPageUri(): URI =
-        URI("https://api-bukubako.herokuapp.com/search?q=${keyword}&page=${currentPage.inc()}") // TODO generate host name
+        UriComponentsBuilder.newInstance()
+            .scheme("https")
+            .host("api.bukubako.com") // TODO generate host name
+            .path("/search")
+            .queryParam("q", keyword)
+            .queryParam("page", currentPage.inc())
+            .build()
+            .toUri()
 }

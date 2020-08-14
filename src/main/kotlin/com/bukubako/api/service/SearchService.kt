@@ -16,7 +16,9 @@ class SearchService {
 
     fun search(request: SearchRequest): SearchResult =
         restTemplate.getForObject(
-            UriComponentsBuilder.fromHttpUrl("https://www.googleapis.com")
+            UriComponentsBuilder.newInstance()
+                .scheme("https")
+                .host("www.googleapis.com")
                 .path("/books/v1/volumes")
                 .queryParam("q", request.keyword())
                 .queryParam("startIndex", request.page())

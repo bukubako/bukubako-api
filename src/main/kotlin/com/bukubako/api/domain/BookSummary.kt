@@ -1,5 +1,6 @@
 package com.bukubako.api.domain
 
+import org.springframework.web.util.UriComponentsBuilder
 import java.net.URI
 
 class BookSummary(
@@ -12,5 +13,10 @@ class BookSummary(
     fun authors(): List<String> = authors
     fun imageUri(): URI = URI(imageUri)
     fun detailUri(): URI =
-        URI("https://api-bukubako.herokuapp.com/books/$id") // TODO generate host name
+        UriComponentsBuilder.newInstance()
+            .scheme("https")
+            .host("api.bukubako.com") // TODO generate host name
+            .path("/books/$id")
+            .build()
+            .toUri()
 }

@@ -18,7 +18,7 @@ class SwaggerConfig {
             .paths(PathSelectors.any())
             .build()
             .useDefaultResponseMessages(false)
-            .host("http://api-bukubako.herokuapp.com")
+            .host("https://api.bukubako.com")
             .apiInfo(
                 ApiInfoBuilder()
                     .title("Bukubako API")

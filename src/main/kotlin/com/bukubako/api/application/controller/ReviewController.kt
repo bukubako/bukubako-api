@@ -6,6 +6,7 @@ import com.bukubako.api.application.response.ReviewsResponseElement
 import io.swagger.annotations.ApiOperation
 import io.swagger.annotations.ApiParam
 import org.springframework.web.bind.annotation.*
+import org.springframework.web.util.UriComponentsBuilder
 
 @RestController
 @RequestMapping("books/{bookId}/reviews")
@@ -25,7 +26,11 @@ class ReviewController {
                 ReviewsResponseElement("読書 次郎", "2020年8月2日 13時00分", "この本の感想2", "http://sample.com/path/to/detail"),
                 ReviewsResponseElement("読書 三朗", "2020年8月3日 13時00分", "この本の感想3", "http://sample.com/path/to/detail")
             ),
-            "http://example.com/path/to/next/page"
+            UriComponentsBuilder.newInstance()
+                .scheme("https")
+                .host("api.bukubako.com")
+                .path("/path/to/next/page")
+                .toUriString()
         )
 
     @ApiOperation(value = "This Resource fetch a review of a book by book id and review id")

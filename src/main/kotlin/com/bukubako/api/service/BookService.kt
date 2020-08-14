@@ -15,7 +15,9 @@ class BookService {
 
     fun get(id: String): Book =
         restTemplate.getForObject(
-            UriComponentsBuilder.fromHttpUrl("https://www.googleapis.com")
+            UriComponentsBuilder.newInstance()
+                .scheme("https")
+                .host("www.googleapis.com")
                 .path("/books/v1/volumes/")
                 .path(id)
                 .build()
