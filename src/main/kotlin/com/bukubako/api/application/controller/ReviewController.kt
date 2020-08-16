@@ -3,6 +3,7 @@ package com.bukubako.api.application.controller
 import com.bukubako.api.application.response.ReviewResponse
 import com.bukubako.api.application.response.ReviewsResponse
 import com.bukubako.api.application.response.ReviewsResponseElement
+import com.bukubako.api.config.AppConfig
 import io.swagger.annotations.ApiOperation
 import io.swagger.annotations.ApiParam
 import org.springframework.web.bind.annotation.*
@@ -10,7 +11,7 @@ import org.springframework.web.util.UriComponentsBuilder
 
 @RestController
 @RequestMapping("books/{bookId}/reviews")
-class ReviewController {
+class ReviewController(val appConfig: AppConfig) {
 
     @ApiOperation(value = "This Resource fetch reviews of a book by book id")
     @CrossOrigin
@@ -27,8 +28,8 @@ class ReviewController {
                 ReviewsResponseElement("読書 三朗", "2020年8月3日 13時00分", "この本の感想3", "http://sample.com/path/to/detail")
             ),
             UriComponentsBuilder.newInstance()
-                .scheme("https")
-                .host("api.bukubako.com")
+                .scheme(appConfig.scheme)
+                .host(appConfig.host)
                 .path("/path/to/next/page")
                 .toUriString()
         )
